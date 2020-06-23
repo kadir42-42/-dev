@@ -1,0 +1,6 @@
+var reverseVowels = function (s, j = 1) {
+    let a = Array.from(s);
+    const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let v = a.filter(c => vowels.indexOf(c) > -1);
+    return a.map((c, i) => (vowels.indexOf(c) > -1) ? v[v.length - j++] : c).join('');
+};
