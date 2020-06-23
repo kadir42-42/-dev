@@ -1,0 +1,53 @@
+function t(n) {
+    if (n % 3 == 0) return 0;
+    for (var m = 5; m * m <= n; m += 6) {
+        if (n % m == 0 || n % (m + 2) == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+function e(n) {
+    if (!t(n)) return;
+    var m = String(n);
+    for (; ;) {
+        m = m.slice(1) + m.slice(0, 1);
+        if (Number(m) == n) {
+            p.push(n);
+            return;
+        }
+        if (!t(Number(m))) {
+            return;
+        }
+    }
+}
+
+function d(x, s) {
+    return function (n) {
+        var z = 1;
+        for (var i = 0; i < x; i++) {
+            z = z * 10;
+        }
+        s(n + z * 1);
+        s(n + z * 3);
+        s(n + z * 7);
+        s(n + z * 9);
+    }
+}
+
+d0 = d(0, e);
+d1 = d(1, d0);
+d2 = d(2, d1);
+d3 = d(3, d2);
+d4 = d(4, d3);
+d5 = d(5, d4);
+p = [2, 3, 5, 7];
+d1(0);
+d2(0);
+d3(0);
+d4(0);
+d5(0);
+
+ans = p.length;
+document.write('ANS: ', ans);
